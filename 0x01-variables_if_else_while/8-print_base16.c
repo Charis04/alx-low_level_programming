@@ -19,6 +19,6 @@ int main(void)
 	for (low = 'a'; low <= 'f'; low++)
 	putchar(low);
 	putchar('\n');
-	
-	return (9);
+
+	return (0);
 }
