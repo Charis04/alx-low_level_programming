@@ -2,6 +2,7 @@
 
 /**
  * _abs - Computes the absolute value of an int
+ * @i: int to be computed
  * Return: Absolute value
  */
 
@@ -11,7 +12,7 @@ int _abs(int i)
 
 	if (i < 0)
 	{
-		ret = i *-1;
+		ret = i * -1;
 	}
 	else
 	{
