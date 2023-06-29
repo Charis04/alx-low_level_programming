@@ -17,14 +17,14 @@ void print_times_table(int n)
 		for (b = 0; b <= n; b++)
 		{
 			c = a * b;
-			if (c > 100)
+			if (c > 99)
 			{
 				f = c % 100;
 				g = (c - f) / 100;
 				if (f > 9)
 				{
 					h = f % 10;
-					i = (f - g) / 10;
+					i = (f - h) / 10;
 					_putchar(',');
 					_putchar(' ');
 					_putchar(g + '0');
