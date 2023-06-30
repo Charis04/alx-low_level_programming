@@ -19,11 +19,11 @@ void print_times_table(int n)
 		{
 			c = a * b;
 			_putchar(',');
-                        _putchar(' ');
-                        if (c < 100)
-                                _putchar(' ');
-                        if (c < 10)
-                                _putchar(' ');
+			_putchar(' ');
+			if (c < 100)
+				_putchar(' ');
+			if (c < 10)
+				_putchar(' ');
 			if (c > 99)
 			{
 				_putchar(c / 100 + '0');
