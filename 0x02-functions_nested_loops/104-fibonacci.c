@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - prints out first 50 fibonacci numbers starting with 1 and 2
+ * main - prints out first 98 fibonacci numbers starting with 1 and 2
  * Return: 0
  */
 
@@ -13,7 +13,7 @@ int main(void)
 	b += c;
 	printf(", ");
 	printf("%lu", b);
-	for (a = 0; a < 47; a++)
+	for (a = 0; a < 48; a++)
 	{
 		c += b;
 		printf(", ");
