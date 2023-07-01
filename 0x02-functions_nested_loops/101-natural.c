@@ -2,6 +2,7 @@
 
 /**
  * _natural - prints the sum of all multiples of 3 and 5 under 1024
+ * @n: number to compute up to
  * Return: void
  */
 
