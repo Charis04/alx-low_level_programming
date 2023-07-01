@@ -8,7 +8,7 @@
 int main(void)
 {
 	unsigned long int a, b = 1, c = 1;
-	
+
 	printf("%lu", b);
 	b += c;
 	printf(", ");
