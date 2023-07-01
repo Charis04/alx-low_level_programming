@@ -9,8 +9,11 @@ int main(void)
 {
 	unsigned long int a, b = 1, c = 1;
 
-	printf("1");
-	for (a = 0; a < 25; a++)
+	printf("%lu", b);
+	b += c;
+	printf(", ");
+	printf("%lu", b);
+	for (a = 0; a < 24; a++)
 	{
 		c += b;
 		printf(", ");
