@@ -10,7 +10,7 @@ int main(void)
 	unsigned long int a = 0, b = 1, c = 0;
 
 	while (a < 4000000)
-        {
+	{
 		c += b;
 		b += c;
 		if (c % 2 == 0)
