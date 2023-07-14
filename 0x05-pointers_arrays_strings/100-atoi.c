@@ -6,7 +6,7 @@
 
 int _atoi(char *s)
 {
-	int mul = 10, ret = 0, i = 0, sign = 1;
+	int end = 0, ret = 0, i = 0, sign = 1;
 
 	while (s[i] != '\0')
 	{
@@ -14,10 +14,14 @@ int _atoi(char *s)
 		{
 			sign *= -1;
 		}
-		if (s[i] >= 48 && s[i] <= 57)
+		while (s[i] >= 48 && s[i] <= 57)
 		{
-			ret = (ret * mul) + (s[i] - 48);
+			end = 1;
+			ret = (ret * 10) + (s[i] - 48);
+			i++;
 		}
+		if (end == 1)
+			break;
 		i++;
 	}
 	return (ret * sign);
