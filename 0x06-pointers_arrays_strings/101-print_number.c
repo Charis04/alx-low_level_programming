@@ -8,6 +8,21 @@
 
 void print_number(int n)
 {
+	/* My code wasn't optimal so i copied this one*/
+	unsigned int k = n;
+
+	if (n < 0)
+	{
+		n *= -1;
+		k = n;
+		_putchar('-');
+	}
+	k /= 10;
+	if (k != 0)
+		print_number(k);
+	_putchar((unsigned int) n % 10 + '0');
+
+	/* This is the code i wrote myself
 	int a, b, c;
 
 	if (n < 0)
@@ -43,5 +58,5 @@ void print_number(int n)
 	else
 	{
 		_putchar(n + '0');
-	}
+	}*/
 }
