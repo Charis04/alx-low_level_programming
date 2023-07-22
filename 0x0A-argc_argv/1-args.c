@@ -7,9 +7,8 @@
  * Return: 0
  */
 
-int main(int argc, char **argv)
+int main(int argc, char __attribute__((unused)) *argv[])
 {
 	printf("%i\n", argc);
-	(void)argv[];
 	return (0);
 }
