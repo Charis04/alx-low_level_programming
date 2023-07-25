@@ -15,10 +15,10 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 
 	while (name[namelen])
 		namelen++;
-	
+
 	while (owner[ownerlen])
 		ownerlen++;
-	
+
 	d->name = malloc((namelen * sizeof(char)) + 1);
 	d->owner = malloc(ownerlen * sizeof(char) + 1);
 
