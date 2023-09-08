@@ -15,7 +15,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filename == NULL)
 		return (0);
-	fd = open(filename, O_RDWR, 0644);
+	fd = open(filename, O_RDWR);
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Failed to open file");
@@ -50,5 +50,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	free(buffer);
-	return (byts_rd);
+	return (byts_wr);
 }
