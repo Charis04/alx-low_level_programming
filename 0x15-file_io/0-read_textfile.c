@@ -22,12 +22,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	buffer = malloc(sizeof(char) * letters);
+	buffer = malloc(sizeof(char) * letters + 1);
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO, "Failed to create buffer to read file to");
 		return (0);
 	}
+	buffer[letters] = '\0';
 
 	byts_rd = read(fd, buffer, letters);
 	if (byts_rd == -1)
@@ -35,6 +36,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		dprintf(STDERR_FILENO, "Failed to read file");
 		return (0);
 	}
+	buffer[byts_rd] = '\0';
 
 	byts_wr = write(STDOUT_FILENO, buffer, byts_rd);
 	if (byts_wr == -1)
