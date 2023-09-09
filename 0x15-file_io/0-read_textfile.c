@@ -26,6 +26,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO, "Failed to create buffer to read file to\n");
+		close(fd);
 		return (0);
 	}
 
@@ -33,6 +34,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (byts_rd == -1)
 	{
 		dprintf(STDERR_FILENO, "Failed to read file\n");
+		free(buffer);
+		close(fd);
 		return (0);
 	}
 
@@ -40,13 +43,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (byts_wr == -1)
 	{
 		dprintf(STDERR_FILENO, "Failed to print text\n");
+		free(buffer);
+		close(fd);
 		return (0);
 	}
 	if (byts_wr != byts_rd)
 	{
 		dprintf(STDERR_FILENO, "Failed to print expected number of bytes\n");
+		free(buffer);
+		close(fd);
 		return (0);
 	}
 	free(buffer);
+	close(fd);
 	return (byts_wr);
 }
