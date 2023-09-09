@@ -23,6 +23,21 @@ int main(int ac, char **av)
 }
 
 /**
+ * _strlen - gets the length of a string
+ * @str: the string
+ * Return: length of the string
+ */
+
+size_t _strlen(char *str)
+{
+	size_t len = 0;
+
+	while (str[len])
+		len++;
+	return (len);
+}
+
+/**
  * cp_content - copies contents of one file to another
  * @src: source file
  * @dest: destination file
@@ -33,7 +48,7 @@ void cp_content(const char *src, const char *dest)
 {
 	int srcfd, destfd, close1, close2;
 	ssize_t bytsrd, bytswr;
-	char buffer[1024];
+	char buffer[1025];
 
 	srcfd = open(src, O_RDONLY);
 	if (srcfd == -1)
@@ -48,6 +63,7 @@ void cp_content(const char *src, const char *dest)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
 		exit(98);
 	}
+	buffer[bytsrd] = '\0';
 
 	destfd = open(dest, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (destfd == -1)
@@ -56,7 +72,7 @@ void cp_content(const char *src, const char *dest)
 		exit(99);
 	}
 
-	bytswr = write(destfd, buffer, 1024);
+	bytswr = write(destfd, buffer, _strlen(buffer));
 	if (bytswr == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest);
