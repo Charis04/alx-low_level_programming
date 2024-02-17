@@ -1,6 +1,11 @@
 #ifndef HASH_TABLES_H
 #define HASH_TABLES_H
 
+/* Header files */
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 /* Function Prototypes */
 hash_table_t *hash_table_create(unsigned long int size);
 
