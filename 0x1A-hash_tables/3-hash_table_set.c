@@ -13,7 +13,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	hash_node_t *item;
+	hash_node_t *element;
 
 	if (key == NULL)
 	{
@@ -21,21 +21,31 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	item = (hash_node_t *) malloc(sizeof(hash_node_t));
 	index = key_index((const unsigned char *)key, ht->size);
+	element = (hash_node_t *) malloc(sizeof(hash_node_t));
+	if (element == NULL)
+	{
+		printf("Failed to allocate memory for element");
+		return (0);
+	}
 
-	item->key = strdup(key);
-	item->value = strdup(value);
-	item->next = NULL;
+	element->key = strdup(key);
+	element->value = strdup(value);
+	element->next = NULL;
 
 	if (ht->array[index] == NULL)
 	{
-		ht->array[index] = item;
+		ht->array[index] = element;
 	}
 	else
 	{
-		item->next = ht->array[index];
-		ht->array[index] = item;
+		if (strcmp(ht->array[index]->key, key) == 0)
+		{
+			ht->array[index]->value = strdup(value);
+			free(element);
+		}
+		element->next = ht->array[index];
+		ht->array[index] = element;
 	}
 
 	return (1);
