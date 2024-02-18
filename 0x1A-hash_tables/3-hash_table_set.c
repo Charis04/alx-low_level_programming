@@ -13,18 +13,18 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	hash_node_t item = (hash_node_t *) malloc(sizeof(hash_node_t));
+	hash_node_t *item;
 
 	if (key == NULL)
 	{
 		printf("Key is and empty string");
-		free(item);
 		return (0);
 	}
 
-	index = key_index(key, ht->size);
+	item = (hash_node_t *) malloc(sizeof(hash_node_t));
+	index = key_index((const unsigned char *)key, ht->size);
 
-	item->key = key;
+	item->key = strdup(key);
 	item->value = strdup(value);
 	item->next = NULL;
 
