@@ -15,9 +15,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int index;
 	hash_node_t *element;
 
+	if (ht == NULL)
+	{
+		printf("Hash table doesnt exist\n");
+		return (0);
+	}
 	if (key == NULL)
 	{
-		printf("Key is and empty string");
+		printf("Key is and empty string\n");
 		return (0);
 	}
 
@@ -25,7 +30,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	element = (hash_node_t *) malloc(sizeof(hash_node_t));
 	if (element == NULL)
 	{
-		printf("Failed to allocate memory for element");
+		printf("Failed to allocate memory for element\n");
 		return (0);
 	}
 
@@ -33,7 +38,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	element->value = strdup(value);
 	element->next = NULL;
 
-	if (ht->array[index] == NULL)
+	if (ht->array[index] == 0)
 	{
 		ht->array[index] = element;
 	}
