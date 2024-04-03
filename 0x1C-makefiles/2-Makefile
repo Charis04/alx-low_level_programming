@@ -1,0 +1,19 @@
+## Variables
+# Compiler
+CC = gcc
+# Source files
+SRC = main.c school.c
+# Object files
+OBJ = $(SRC:.c=.o)
+# Executable
+NAME = school
+
+# Build Executable
+all: ${NAME}
+
+## Rule
+${NAME}: ${OBJ}
+	${CC} ${OBJ} -o ${NAME}
+
+%.O: %.C
+	${CC} -c $< -o $@
