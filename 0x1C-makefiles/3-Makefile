@@ -1,8 +1,8 @@
 ## Variables
-CC = gcc		# Compiler
-SRC = main.c school.c   # Source files
-OBJ = $(SRC:.c=.o)	# Generate object files automatically
-NAME = school		# Executable
+CC = gcc # Compiler
+SRC = main.c school.c # Source files
+OBJ = $(SRC:.c=.o) # Generate object files automatically
+NAME = school # Executable
 
 # Build Executable
 all: ${NAME}
