@@ -2,6 +2,7 @@
 CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
+RM = rm -f
 NAME = school
 
 # Build Executable
@@ -16,11 +17,11 @@ ${NAME}: ${OBJ}
 
 # Remove all Emacs and Vim temporary files along with the executable
 clean:
-	rm -f *~ ${NAME}
+	${RM} *~ ${NAME}
 
 # Remove all object files
 oclean:
-	rm -f $(OBJ)
+	${RM} $(OBJ)
 
 # Remove all Emacs and Vim temporary files, the executable, 
 # and the object files
