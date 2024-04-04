@@ -1,32 +1,21 @@
-# Define variables (indirectly set CFLAGS)
-CFLAGS = -Wall -Werror -Wextra -pedantic
-CC = gcc $(CFLAGS)
+CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
-RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
-# Rules (using internal variables)
-all: $(NAME)
+.PHONY: all clean oclean fclean re
 
-$(NAME): $(SRC)
-	gcc $(SRC) -o $(NAME)
+all: m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
-	$(RM) *~ .*.swp $(NAME)
+	$(RM) *~ $(NAME)
 
 oclean:
-	$(RM) $(foreach f,$(SRC),$(f:.c=.o))
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
-re:
-	$(RM) $(foreach f,$(SRC),$(f:.c=.o))
-	$(MAKE) all
-
-# Phony targets
-.PHONY: all clean oclean fclean re
-
-# Implicit rule to ensure clean target is up-to-date before building
-$(NAME): m.h
+re: fclean all
 
