@@ -14,6 +14,26 @@ Returns:
 
 
 def island_perimeter(grid):
+    """
+    Calculate the perimeter of the island described in the grid.
+
+    Args:
+    grid (list of list of int): Represents the grid where 0 represents
+    water zone and 1 represents land zone.
+
+    Returns:
+    int: The perimeter of the island.
+
+    Raises:
+    ValueError: If grid is empty or invalid.
+
+    Example:
+    >>> island_perimeter([[0, 1, 0, 0],
+                          [1, 1, 1, 0],
+                          [0, 1, 0, 0],
+                          [1, 1, 0, 0]])
+    16
+    """
     rows, cols = len(grid), len(grid[0])
     perimeter = 0
     # Iterate through each cell in the grid
