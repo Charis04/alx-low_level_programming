@@ -1,0 +1,31 @@
+# Define variables (indirectly set CFLAGS)
+CFLAGS_INTERNAL = -Wall -Werror -Wextra -pedantic  # Favorite compiler flags (hidden)
+CC = gcc $(CFLAGS_INTERNAL)  # Compiler with flags (indirect reference)
+SRC = main.c  # Source files (add more .c files here if needed)
+NAME = school  # Executable name
+RM = rm -f  # Program to remove files (prevented setting directly)
+
+# Rules (using internal variables)
+all: $(NAME)
+
+$(NAME): $(SRC)
+	gcc $(SRC) -o $(NAME)  # Link object files (indirect CC reference)
+
+clean:
+	$(RM) *~ .*.swp $(NAME)  # Clean with suppressed output
+
+oclean:
+	$(RM) $(foreach f,$(SRC),$(f:.c=.o))  # Remove object files using loop
+
+fclean: clean oclean
+
+re:
+	$(RM) $(foreach f,$(SRC),$(f:.c=.o))  # Remove object files for rebuild
+	$(MAKE) all  # Rebuild everything  
+
+# Phony targets
+.PHONY: all clean oclean fclean re
+
+# Implicit rule to ensure clean target is up-to-date before building
+$(NAME): m.h
+
